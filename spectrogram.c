@@ -569,7 +569,7 @@ main (int argc, char * argv [])
 		}
 
 	render.sndfilepath = argv[1] ;
-	render.width = 2000 ;
+	render.width = 1000 ; //改为2000更好（少检测1个错误），但1000更快
 	render.height = 1000 ;
 
 	render.filename = strrchr (render.sndfilepath, '/') ;
