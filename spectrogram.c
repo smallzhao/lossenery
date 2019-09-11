@@ -473,16 +473,17 @@ render_to_surface (const RENDER * render, SNDFILE *infile, int samplerate, sf_co
 		}
 
 	//连续8个点低于0.7的段数量不应该大于10
+	count=0;
 	for (int spec_i = 0 ; spec_i < speclen ; spec_i++)
 	{
 		if (num_of_spec_below_avg[spec_i]/width<0.7)
 		{
 			count++;
-			if (count>5) {warning2++;count=0;}
+			if (count>8) {warning2++;count=0;}
 		}
 	}
 
-	if (warning1>5 && warning2>10) {printf("loss warning1=%d\twarning1=%d\n",warning1,warning2);} else {printf("ok\n");}
+	if (warning1>5 && warning2>5) {printf("loss warning1=%d\twarning1=%d\n",warning1,warning2);} else {printf("ok\n");}
 
 	/*
 	for (int th=5;th<15;th++) {printf("\t%d",th);};
