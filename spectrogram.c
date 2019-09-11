@@ -448,7 +448,7 @@ render_to_surface (const RENDER * render, SNDFILE *infile, int samplerate, sf_co
     printf("_____________num_of_spec_below_avg______________\n");
 	for (int spec_i = 0 ; spec_i < speclen ; spec_i++)
 	{
-		printf("%.2f ",num_of_spec_below_avg[spec_i]);
+		printf("%.3f ",num_of_spec_below_avg[spec_i]/width);
 	}
 	*/
 
@@ -463,7 +463,7 @@ render_to_surface (const RENDER * render, SNDFILE *infile, int samplerate, sf_co
 
 	printf("detect ");
 	//连续5个点低于0.65的段数量不应该大于5
-	for (int spec_i = 0 ; spec_i < speclen ; spec_i++)
+	for (int spec_i = 500 ; spec_i < speclen ; spec_i++)
 		{
 			if (num_of_spec_below_avg[spec_i]/width<0.65)
 			{
@@ -474,7 +474,7 @@ render_to_surface (const RENDER * render, SNDFILE *infile, int samplerate, sf_co
 
 	//连续8个点低于0.7的段数量不应该大于10
 	count=0;
-	for (int spec_i = 0 ; spec_i < speclen ; spec_i++)
+	for (int spec_i = 500 ; spec_i < speclen ; spec_i++)
 	{
 		if (num_of_spec_below_avg[spec_i]/width<0.7)
 		{
@@ -483,7 +483,7 @@ render_to_surface (const RENDER * render, SNDFILE *infile, int samplerate, sf_co
 		}
 	}
 
-	if (warning1>5 && warning2>5) {printf("loss warning1=%d\twarning1=%d\n",warning1,warning2);} else {printf("ok\n");}
+	if (warning1>4 && warning2>4) {printf("loss warning1=%d\twarning1=%d\n",warning1,warning2);} else {printf("ok\n");}
 
 	/*
 	for (int th=5;th<15;th++) {printf("\t%d",th);};
