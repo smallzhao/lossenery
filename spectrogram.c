@@ -463,18 +463,18 @@ render_to_surface (const RENDER * render, SNDFILE *infile, int samplerate, sf_co
 
 	printf("detect ");
 	//连续5个点低于0.65的段数量不应该大于5
-	for (int spec_i = 500 ; spec_i < speclen ; spec_i++)
+	for (int spec_i = 800 ; spec_i < speclen ; spec_i++)
 		{
 			if (num_of_spec_below_avg[spec_i]/width<0.65)
 			{
 				count++;
-				if (count>5) {warning1++;count=0;}
+				if (count>5) {warning1++;/*printf("%d ",spec_i);*/count=0;}
 			}
 		}
 
 	//连续8个点低于0.7的段数量不应该大于10
 	count=0;
-	for (int spec_i = 500 ; spec_i < speclen ; spec_i++)
+	for (int spec_i = 800 ; spec_i < speclen ; spec_i++)
 	{
 		if (num_of_spec_below_avg[spec_i]/width<0.7)
 		{
